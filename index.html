@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pine BTC Trader</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <header class="card hero">
+        <div>
+          <h1>Pine BTC Trader</h1>
+          <p>
+            Preview your Flawless Victory Strategy automation for BTC-USD with live
+            candles, clear controls, and execution logs.
+          </p>
+        </div>
+        <div class="status-pill" id="botStatus">Stopped</div>
+      </header>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Coinbase Access</h2>
+          <p class="muted">
+            Paste your Coinbase Advanced API key. For safety in this preview,
+            key stays in your browser only.
+          </p>
+          <label class="field">
+            <span>API Key (no secret)</span>
+            <input id="apiKey" type="password" placeholder="organizations/.../apiKeys/..." />
+          </label>
+          <label class="field">
+            <span>Trading Pair</span>
+            <input id="productId" type="text" value="BTC-USD" />
+          </label>
+        </article>
+
+        <article class="card">
+          <h2>Strategy Controls</h2>
+          <div class="row three">
+            <label class="field">
+              <span>Version</span>
+              <select id="version">
+                <option value="v1">v1 (No SL/TP)</option>
+                <option value="v2">v2 (SL/TP)</option>
+                <option value="v3">v3 (SL/TP)</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Stop Loss %</span>
+              <input id="stopLossPct" type="number" min="0.01" step="0.001" value="6.604" />
+            </label>
+            <label class="field">
+              <span>Take Profit %</span>
+              <input id="takeProfitPct" type="number" min="0.01" step="0.001" value="2.328" />
+            </label>
+          </div>
+          <div class="row two">
+            <label class="field">
+              <span>Max Buy Amount (USD)</span>
+              <input id="maxBuyUsd" type="number" min="1" step="1" value="100" />
+            </label>
+            <label class="field">
+              <span>Poll Interval (seconds)</span>
+              <input id="pollSeconds" type="number" min="5" step="1" value="20" />
+            </label>
+          </div>
+          <div class="controls">
+            <button id="startBtn" class="btn primary">Start</button>
+            <button id="stopBtn" class="btn" disabled>Stop</button>
+          </div>
+        </article>
+
+        <article class="card metrics">
+          <h2>Runtime</h2>
+          <div class="metric-grid">
+            <div><span>Price</span><strong id="priceValue">-</strong></div>
+            <div><span>RSI</span><strong id="rsiValue">-</strong></div>
+            <div><span>MFI</span><strong id="mfiValue">-</strong></div>
+            <div><span>Position</span><strong id="positionValue">FLAT</strong></div>
+            <div><span>SL</span><strong id="slValue">-</strong></div>
+            <div><span>TP</span><strong id="tpValue">-</strong></div>
+          </div>
+          <p class="muted small">
+            Live order placement is intentionally disabled in this preview build.
+            Signals are generated exactly from your strategy logic, then paper-filled.
+          </p>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Execution Log</h2>
+        <pre id="logPanel" class="log"></pre>
+      </section>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
